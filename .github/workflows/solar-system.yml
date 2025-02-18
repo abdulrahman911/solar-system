@@ -24,6 +24,14 @@ jobs:
           with:
             node-version: 18
 
+        - name: Cache Node Modules and Dependencies
+          uses: actions/cache@v3
+          with:
+            path: node_modules
+            key: node-modules-${{ hashFiles('package-lock.json') }}
+            # restore-keys: |
+            #   node-modules-
+
         - name: Install Dependencies
           run: npm install
 
